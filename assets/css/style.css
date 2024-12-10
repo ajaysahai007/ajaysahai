@@ -11,7 +11,7 @@
   outline: none;
   border: none;
   text-transform: capitalize;
-  transition: all 0.2s linear;
+  /* transition: all 0.2s linear; */
 }
 html {
   font-size: 62.5%;
