@@ -1,4 +1,4 @@
-/*
+
 
 $(document).ready(function () {
 
@@ -270,9 +270,5 @@ srtop.reveal('.contact .container .form-group', { delay: 400 });
 
 
 
-FileSystemFileHandle
-FileSystemFileEntry
-SVGFEDropShadowElement 
 
-*/
 
