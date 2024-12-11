@@ -298,9 +298,9 @@ header .navbar ul li a:hover {
   text-align: center;
   margin-right: 8px;
   border-radius: 100%;
-  -webkit-transition: all 0.2s linear;
+  /* -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+  transition: all 0.2s linear; */
 }
 .social-icons a:active,
 .social-icons a:focus,
