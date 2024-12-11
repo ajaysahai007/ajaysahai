@@ -138,7 +138,7 @@ function showProjects(projects) {
     const srtop = ScrollReveal({
         origin: 'top',
         distance: '80px',
-        duration: 1000,
+        duration: 100,
         reset: true
     });
 
@@ -210,7 +210,7 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
 const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
-    duration: 1000,
+    duration: 100,
     reset: true
 });
 
