@@ -21,7 +21,7 @@ $(document).ready(function(){
 const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
-    duration: 100,
+    duration: 0,
     reset: true
 });
 
