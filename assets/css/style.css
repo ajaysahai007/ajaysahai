@@ -12,7 +12,7 @@
   outline: none;
   border: none;
   text-transform: capitalize;
-  transition: none;
+  /* transition: none; */
 }
 html {
   font-size: 62.5%;
@@ -115,7 +115,7 @@ header .navbar ul li a {
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04rem;
-  transition: 0.2s;
+  /* transition: 0.2s; */
 }
 header .navbar ul li a.active,
 header .navbar ul li a:hover {
@@ -251,7 +251,7 @@ header .navbar ul li a:hover {
   line-height: 0;
   padding: 1.6rem 3rem;
   border-radius: 4em;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   color: #fff;
   background: #2506ad;
   box-shadow: 0px 5px 18px rgba(48, 68, 247, 0.6);
@@ -265,7 +265,7 @@ header .navbar ul li a:hover {
 .home .btn i {
   margin-left: 0.3rem;
   font-size: 1.5rem;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 .home .btn:hover {
   background: #1a047e;
@@ -463,7 +463,7 @@ header .navbar ul li a:hover {
   border-radius: 10%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
   mix-blend-mode: luminosity;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   cursor: pointer;
 }
 .about .row .image img:hover {
@@ -509,7 +509,7 @@ header .navbar ul li a:hover {
 .resumebtn .btn {
   padding: 1.7rem 3rem;
   border-radius: 0.5em;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   color: #fff;
   background: #2506ad;
   box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
@@ -523,7 +523,7 @@ header .navbar ul li a:hover {
 .resumebtn .btn i {
   margin-left: 0.3rem;
   font-size: 1.2rem;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 .resumebtn .btn:hover {
   background: #1a047e;
@@ -607,7 +607,7 @@ header .navbar ul li a:hover {
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 22, 0.9);
-  transition: 0.2s;
+  /* transition: 0.2s; */
 }
 .skills .container .bar:hover {
   box-shadow: 0 8px 10px rgba(0, 2, 68, 0.8) !important;
@@ -678,7 +678,7 @@ header .navbar ul li a:hover {
   position: relative;
   margin-top: 2rem;
   overflow: hidden;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   background: rgb(252, 252, 252);
 }
 .education .box-container .box:hover {
@@ -850,7 +850,7 @@ header .navbar ul li a:hover {
   line-height: 0;
   padding: 1.6rem 3rem;
   border-radius: 0.5em;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   color: rgb(255, 255, 255);
   font-weight: 700;
   border: 2px solid #fff;
@@ -865,7 +865,7 @@ header .navbar ul li a:hover {
 .work .viewall .btn i {
   margin-left: 0.3rem;
   font-size: 1.5rem;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 .work .viewall .btn:hover {
   background: #fff;
@@ -983,7 +983,7 @@ header .navbar ul li a:hover {
   line-height: 0;
   padding: 1.6rem 3rem;
   border-radius: 0.5em;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   color: #fff;
   background: #2506ad;
   box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
@@ -997,7 +997,7 @@ header .navbar ul li a:hover {
 .morebtn .btn i {
   margin-left: 0.3rem;
   font-size: 1.5rem;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 .morebtn .btn:hover {
   background: #1a047e;
@@ -1170,7 +1170,7 @@ form .button-area {
   padding: 13px 25px;
   background: #2506ad;
   box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
-  transition: 0.3s ease;
+  /* transition: 0.3s ease; */
   font-family: "Nunito", sans-serif;
 }
 .button-area button:hover {
@@ -1186,7 +1186,7 @@ form .button-area {
   top: 6px;
   left: 2px;
   font-size: 1.5rem;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   color: #fff;
 }
 .button-area button:hover i {
@@ -1267,7 +1267,7 @@ form .button-area {
   border-radius: 5rem;
   font-size: 1.7rem;
   margin-right: 1rem;
-  transition: 0.2s;
+  /* transition: 0.2s; */
   background: rgb(230, 230, 230);
   color: #02094b;
   border: none;
@@ -1343,7 +1343,7 @@ form .button-area {
   background: #ffae00;
   color: rgb(13, 0, 44);
   border-radius: 50%;
-  transition: 1s linear;
+  /* transition: 1s linear; */
   z-index: 1000;
 }
 #scroll-top.active {
