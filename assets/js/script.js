@@ -208,14 +208,14 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
 // End of Tawk.to Live Chat
 
 
-/* ===== SCROLL REVEAL ANIMATION ===== */
+/* ===== SCROLL REVEAL ANIMATION ===== 
 const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 0,
     reset: true
 });
-
+===== SCROLL REVEAL ANIMATION ===== */
 
 // <script>
 //     $(document).ready(function(){
