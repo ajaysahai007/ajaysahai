@@ -10,6 +10,20 @@
   text-transform:capitalize;
   transition: all .1s linear;
 }
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
 html{
   font-size: 62.5%;
   overflow-x: hidden;
@@ -215,6 +229,7 @@ header .navbar ul li a:hover{
   height: 100%;
   width:100%;
   object-fit: cover;
+  max-width: 100%;
 }
 .work .box-container .box .content{
   height: 100%;
@@ -270,14 +285,303 @@ header .navbar ul li a:hover{
   background: #310ae0f5;
 }
 
-@media screen and (max-width: 450px) {
-  .work .button-group{
+/* ========================================
+   COMPREHENSIVE RESPONSIVE DESIGN
+   ======================================== */
+
+/* Extra small devices (phones, up to 576px) */
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+  
+  /* Prevent text size adjustment on iOS */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
     width: 100%;
   }
-  .work .box-container{
+
+  header {
+    padding: 1.5rem 5%;
+    height: auto;
+    min-height: 6.5rem;
+  }
+
+  header .logo {
+    font-size: 1.6rem;
+  }
+  
+  /* Better mobile menu */
+  header .navbar {
+    width: 85% !important;
+    max-width: 300px;
+  }
+
+  section {
+    padding: 2rem 1rem;
+    margin-top: 5rem;
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  a, button, .btn {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Better form inputs on mobile */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+  }
+
+  .work .button-group {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.5rem auto;
+  }
+
+  .work .button-group .btn {
+    width: 90%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .work .box-container {
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+
+  .work .box-container .box {
+    flex: 1 1 100%;
+    height: 28rem;
+  }
+
+  .work .box-container .box .content .tag h3 {
+    font-size: 1.6rem;
+  }
+
+  .work .desc p {
+    font-size: 1.3rem;
+  }
+
+  .work .desc .btns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .work .desc .btns .btn {
+    width: 100%;
+    margin-right: 0;
+    padding: 1.2rem 2rem;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .backbtn {
+    margin: 3rem 0 2rem;
+  }
+
+  .backbtn .btn {
+    padding: 1.4rem 2.5rem;
+    font-size: 1.5rem;
+    width: 90%;
+  }
+
+  #scroll-top {
+    right: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.8rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Better focus states for accessibility */
+  a:focus,
+  button:focus,
+  .btn:focus {
+    outline: 2px solid #011aff;
+    outline-offset: 2px;
+  }
+}
+
+/* Very small devices (320px and below) */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 45%;
+  }
+  
+  header {
+    padding: 1.2rem 3%;
+  }
+  
+  header .logo {
+    font-size: 1.4rem;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+  }
+  
+  .work .button-group .btn {
+    width: 95%;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.2rem;
+  }
+  
+  .work .box-container .box {
+    height: 25rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+  
+  .work {
+    margin-top: 3rem;
+  }
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  section {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Small devices (phones, 577px to 768px) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 1.5rem 7%;
+    height: auto;
+    min-height: 6.5rem;
+  }
+  
+  /* Better touch targets */
+  a, button, .btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  section {
+    padding: 2rem 3%;
+    margin-top: 5rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+  }
+
+  .work .button-group {
+    width: 90%;
+    gap: 1rem;
+  }
+
+  .work .button-group .btn {
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  .work .box-container {
+    margin: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .work .box-container .box {
+    flex: 1 1 48%;
+    height: 30rem;
+  }
+
+  .backbtn .btn {
+    padding: 1.5rem 2.8rem;
+  }
+}
+
+/* Medium devices (tablets, 769px to 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  html {
+    font-size: 58%;
+  }
+
+  header {
+    padding: 1.7rem 8%;
+  }
+
+  section {
+    padding: 2rem 5%;
+  }
+
+  .work .button-group {
+    width: 70%;
+  }
+
+  .work .box-container .box {
+    flex: 1 1 48%;
+  }
+}
+
+/* Large devices (desktops, 993px to 1200px) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+
+  header {
+    padding: 1.7rem 9%;
+  }
+
+  section {
+    padding: 2rem 7%;
+  }
+
+  .work .button-group {
+    width: 60%;
+  }
+}
+
+/* Common responsive adjustments */
+@media screen and (max-width: 450px) {
+  .work .button-group {
+    width: 100%;
+  }
+  
+  .work .box-container {
     margin: 0rem;
   }
-  .work .box-container .grid-item .box{
+  
+  .work .box-container .grid-item .box {
     width: 95% !important;
   }
 }
