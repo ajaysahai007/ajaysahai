@@ -7,41 +7,98 @@ $(document).ready(function () {
     const themeIcon = document.getElementById('theme-icon');
     const html = document.documentElement;
 
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-        html.setAttribute('data-theme', 'dark');
+    // Function to get current time in India timezone (IST - UTC+5:30)
+    function getIndiaTime() {
+        const now = new Date();
+        // Convert to IST (UTC+5:30)
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const ist = new Date(utc + (5.5 * 3600000)); // IST is UTC+5:30
+        return ist;
+    }
+
+    // Function to determine if it should be dark mode based on India time
+    // Dark mode: 6 PM (18:00) to 6 AM (06:00)
+    // Light mode: 6 AM (06:00) to 6 PM (18:00)
+    function shouldBeDarkMode() {
+        const istTime = getIndiaTime();
+        const hours = istTime.getHours();
+        // Dark mode from 18:00 (6 PM) to 05:59 (just before 6 AM)
+        return hours >= 18 || hours < 6;
+    }
+
+    // Function to apply theme based on time
+    function applyThemeBasedOnTime() {
+        const isDark = shouldBeDarkMode();
+        const theme = isDark ? 'dark' : 'light';
+        
+        html.setAttribute('data-theme', theme);
         if (themeIcon) {
-            themeIcon.src = './assets/images/sun.png';
-            themeIcon.alt = 'Light Mode';
+            if (theme === 'dark') {
+                themeIcon.src = './assets/images/sun.png';
+                themeIcon.alt = 'Light Mode';
+            } else {
+                themeIcon.src = './assets/images/moon.png';
+                themeIcon.alt = 'Dark Mode';
+            }
         }
+        
+        // Update particles theme after a short delay
+        setTimeout(function() {
+            if (typeof window.updateParticlesTheme === 'function') {
+                window.updateParticlesTheme();
+            }
+        }, 200);
+    }
+
+    // Check if user has manually overridden the theme
+    const manualOverride = localStorage.getItem('theme-manual-override');
+    
+    // Apply theme based on time if no manual override
+    if (!manualOverride) {
+        applyThemeBasedOnTime();
     } else {
-        html.setAttribute('data-theme', 'light');
+        // Use saved manual preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
         if (themeIcon) {
-            themeIcon.src = './assets/images/moon.png';
-            themeIcon.alt = 'Dark Mode';
+            if (savedTheme === 'dark') {
+                themeIcon.src = './assets/images/sun.png';
+                themeIcon.alt = 'Light Mode';
+            } else {
+                themeIcon.src = './assets/images/moon.png';
+                themeIcon.alt = 'Dark Mode';
+            }
         }
     }
 
-    // Toggle theme on button click
+    // Set up interval to check time every minute and update theme automatically
+    // Only if manual override is not set
+    setInterval(function() {
+        if (!localStorage.getItem('theme-manual-override')) {
+            applyThemeBasedOnTime();
+        }
+    }, 60000); // Check every minute
+
+    // Toggle theme on button click (manual override)
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
             const currentTheme = html.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                html.setAttribute('data-theme', 'dark');
-                if (themeIcon) {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            if (themeIcon) {
+                if (newTheme === 'dark') {
                     themeIcon.src = './assets/images/sun.png';
                     themeIcon.alt = 'Light Mode';
-                }
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.setAttribute('data-theme', 'light');
-                if (themeIcon) {
+                } else {
                     themeIcon.src = './assets/images/moon.png';
                     themeIcon.alt = 'Dark Mode';
                 }
-                localStorage.setItem('theme', 'light');
             }
+            
+            // Save manual preference and set override flag
+            localStorage.setItem('theme', newTheme);
+            localStorage.setItem('theme-manual-override', 'true');
             
             // Update particles theme after a short delay to ensure DOM is updated
             setTimeout(function() {
