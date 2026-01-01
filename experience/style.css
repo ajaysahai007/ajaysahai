@@ -10,6 +10,20 @@
   text-transform:capitalize;
   transition: all .2s linear;
 }
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
 html{
   font-size: 62.5%;
   overflow-x: hidden;
@@ -294,33 +308,360 @@ header .navbar ul li a:hover{
   transform: translateX(-8px);
 }
 
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
+/* ========================================
+   COMPREHENSIVE RESPONSIVE DESIGN
+   ======================================== */
+
+/* Extra small devices (phones, up to 576px) */
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+  
+  /* Prevent text size adjustment on iOS */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  header {
+    padding: 1.5rem 5%;
+    height: auto;
+    min-height: 6.5rem;
+  }
+
+  header .logo {
+    font-size: 1.6rem;
+  }
+  
+  /* Better mobile menu */
+  header .navbar {
+    width: 85% !important;
+    max-width: 300px;
+  }
+
+  section {
+    padding: 2rem 1rem;
+    margin-top: 5rem;
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  a, button, .btn {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+  }
+
+  .experience .quote {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+  }
+
+  .experience .timeline {
+    margin: 1.5rem auto;
+  }
+
   .experience .timeline::after {
-  left: 31px;
+    left: 31px;
   }
+
   .experience .container {
-  width: 100%;
-  padding-left: 70px;
-  padding-right: 25px;
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 20px;
   }
+
   .experience .container::before {
-  left: 60px;
-  border: medium solid #f68c09;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent #f68c09 transparent transparent;
+    left: 60px;
+    border: medium solid #f68c09;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f68c09 transparent transparent;
   }
-  .experience .left::after {
-    left: 15px;
-  }
+
+  .experience .left::after,
   .experience .right::after {
     left: 15px;
   }
+
   .experience .right {
-  left: 0%;
+    left: 0%;
   }
+
   .experience .container::after {
-    font-size: 2.2rem;;
+    font-size: 2.2rem;
+  }
+
+  .experience .content .tag h2 {
+    font-size: 1.6rem;
+  }
+
+  .experience .content .desc h3 {
+    font-size: 1.3rem;
+  }
+
+  .experience .content .desc p {
+    font-size: 1.1rem;
+  }
+
+  .morebtn {
+    margin: 2rem 0;
+  }
+
+  .morebtn .btn {
+    padding: 1.4rem 2.5rem;
+    font-size: 1.5rem;
+    width: 90%;
+  }
+
+  .footer .box-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .footer .box-container .box {
+    margin: 1rem 0;
+  }
+
+  #scroll-top {
+    right: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .whatsapp_float {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 15px;
+    font-size: 22px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Better focus states for accessibility */
+  a:focus,
+  button:focus,
+  .btn:focus {
+    outline: 2px solid #011aff;
+    outline-offset: 2px;
+  }
+}
+
+/* Very small devices (320px and below) */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 45%;
+  }
+  
+  header {
+    padding: 1.2rem 3%;
+  }
+  
+  header .logo {
+    font-size: 1.4rem;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+  }
+  
+  .experience .container {
+    padding-left: 60px;
+    padding-right: 15px;
+  }
+  
+  .experience .content .tag h2 {
+    font-size: 1.4rem;
+  }
+  
+  .experience .content .desc h3 {
+    font-size: 1.2rem;
+  }
+  
+  .morebtn .btn {
+    width: 95%;
+    padding: 1.2rem 2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+  
+  .experience {
+    margin-top: 3rem;
+  }
+  
+  .experience .timeline {
+    margin: 1rem auto;
+  }
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  section {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Small devices (phones, 577px to 768px) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 1.5rem 7%;
+    height: auto;
+    min-height: 6.5rem;
+  }
+  
+  /* Better touch targets */
+  a, button, .btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  section {
+    padding: 2rem 3%;
+    margin-top: 5rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+  }
+
+  .experience .timeline::after {
+    left: 31px;
+  }
+
+  .experience .container {
+    width: 100%;
+    padding-left: 75px;
+    padding-right: 25px;
+  }
+
+  .experience .container::before {
+    left: 65px;
+  }
+
+  .experience .left::after,
+  .experience .right::after {
+    left: 15px;
+  }
+
+  .experience .right {
+    left: 0%;
+  }
+
+  .morebtn .btn {
+    padding: 1.5rem 2.8rem;
+  }
+
+  .footer .box-container {
+    padding: 2rem;
+  }
+
+  .footer .box-container .box {
+    flex: 1 1 45%;
+    margin: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 769px to 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  html {
+    font-size: 58%;
+  }
+
+  header {
+    padding: 1.7rem 8%;
+  }
+
+  section {
+    padding: 2rem 5%;
+  }
+
+  .experience .timeline {
+    max-width: 900px;
+  }
+}
+
+/* Large devices (desktops, 993px to 1200px) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+
+  header {
+    padding: 1.7rem 9%;
+  }
+
+  section {
+    padding: 2rem 7%;
+  }
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  .experience .timeline::after {
+    left: 31px;
+  }
+  
+  .experience .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .experience .container::before {
+    left: 60px;
+    border: medium solid #f68c09;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f68c09 transparent transparent;
+  }
+  
+  .experience .left::after {
+    left: 15px;
+  }
+  
+  .experience .right::after {
+    left: 15px;
+  }
+  
+  .experience .right {
+    left: 0%;
+  }
+  
+  .experience .container::after {
+    font-size: 2.2rem;
   }
 }
 /* experience media queries ends */

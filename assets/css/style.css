@@ -14,14 +14,57 @@
   text-transform: capitalize;
   /* transition: none; */
 }
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+:root {
+  --bg-color: #f7f7f7;
+  --text-color: #0e2431;
+  --heading-color: rgb(32, 32, 32);
+  --section-bg: #fff;
+  --navbar-bg: #fff;
+  --box-shadow: rgba(146, 161, 176, 0.3);
+  --about-bg: rgb(255, 255, 255);
+  --education-bg: #e5ecfb;
+  --contact-bg: #e5ecfb;
+  --contact-form-bg: #fff;
+  --input-bg: #e5ecfb;
+  --footer-bg: rgb(0, 1, 43);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0e0f31;
+  --text-color: #fff;
+  --heading-color: #fff;
+  --section-bg: #1a1a2e;
+  --navbar-bg: #1a1a2e;
+  --box-shadow: rgba(0, 0, 0, 0.5);
+  --about-bg: #1a1a2e;
+  --education-bg: #16213e;
+  --contact-bg: #16213e;
+  --contact-form-bg: #1a1a2e;
+  --input-bg: #0e0f31;
+  --footer-bg: #0a0a1a;
+}
+
 body {
-  background: #f7f7f7;
+  background: var(--bg-color);
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 *::selection {
@@ -73,17 +116,19 @@ header {
   justify-content: space-between;
   padding: 1.7rem 10%;
   height: 6.5rem;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
+  background-color: var(--navbar-bg);
+  box-shadow: 0 1px 4px var(--box-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 section {
   padding: 2rem 9%;
 }
 .heading {
   font-size: 3.5rem;
-  color: rgb(32, 32, 32);
+  color: var(--heading-color);
   font-weight: 800;
   text-align: center;
+  transition: color 0.3s ease;
 }
 .heading span {
   color: rgb(115, 3, 167);
@@ -92,7 +137,8 @@ header .logo {
   font-size: 1.9rem;
   font-weight: 800;
   text-decoration: none;
-  color: #0e2431;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 header .logo i {
   font-size: 2.2rem;
@@ -111,11 +157,11 @@ header .navbar li {
 }
 header .navbar ul li a {
   font-size: 1.57rem;
-  color: #0e2431;
+  color: var(--text-color);
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04rem;
-  /* transition: 0.2s; */
+  transition: color 0.3s ease;
 }
 header .navbar ul li a.active,
 header .navbar ul li a:hover {
@@ -129,8 +175,54 @@ header .navbar ul li a:hover {
 #menu {
   font-size: 3rem;
   cursor: pointer;
-  color: rgb(24, 2, 63);
+  color: var(--text-color);
   display: none;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+  background: transparent;
+  border: none;
+  padding: 5px;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+  display: block;
+  object-fit: contain;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(20deg);
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-right: 0.5rem;
+    width: 35px;
+    height: 35px;
+  }
+  .theme-icon {
+    width: 25px;
+    height: 25px;
+  }
 }
 @media (max-width: 768px) {
   #menu {
@@ -188,6 +280,8 @@ header .navbar ul li a:hover {
   gap: 1.5rem;
   min-height: 100vh;
   align-items: center;
+  background: var(--bg-color);
+  transition: background-color 0.3s ease;
 }
 .home #particles-js {
   position: absolute;
@@ -195,6 +289,20 @@ header .navbar ul li a:hover {
   left: 0;
   height: 100%;
   width: 100%;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] .home #particles-js {
+  opacity: 1;
+}
+
+/* Ensure particles canvas is visible */
+.home #particles-js canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 .home::before {
   content: "";
@@ -227,23 +335,46 @@ header .navbar ul li a:hover {
   font-size: 5rem;
   font-weight: 800;
   color: #002057;
+  transition: color 0.3s ease;
 }
+
+[data-theme="dark"] .home .content h2 {
+  color: #4a9eff;
+}
+
 .home .content h2 span {
   font-size: 5rem;
   font-weight: 800;
   color: #ff7b00;
+  transition: color 0.3s ease;
 }
+
+[data-theme="dark"] .home .content h2 span {
+  color: #ffa500;
+}
+
 .home .content p {
   font-size: 2.5rem;
   color: #000;
   font-weight: 600;
   padding: 1rem 0;
+  transition: color 0.3s ease;
 }
+
+[data-theme="dark"] .home .content p {
+  color: #e0e0e0;
+}
+
 .home .content p span {
   font-size: 2.5rem;
   color: rgb(148, 8, 8);
   font-weight: 600;
   padding: 1rem 0;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .home .content p span {
+  color: #ff6b6b;
 }
 .home .btn {
   margin-top: 1rem;
@@ -443,7 +574,8 @@ header .navbar ul li a:hover {
 
 /* about section starts */
 .about {
-  background: rgb(255, 255, 255);
+  background: var(--about-bg);
+  transition: background-color 0.3s ease;
 }
 .about .row {
   display: flex;
@@ -474,8 +606,9 @@ header .navbar ul li a:hover {
   padding: 0rem;
 }
 .about .row .content h3 {
-  color: rgb(27, 27, 27);
+  color: var(--text-color);
   font-size: 2.5rem;
+  transition: color 0.3s ease;
 }
 .about .row .content .tag {
   font-size: 1.4rem;
@@ -577,7 +710,8 @@ header .navbar ul li a:hover {
 
 /* skills section starts */
 .skills {
-  min-height: 90vh;
+  min-height: auto;
+  padding-bottom: 2rem;
   background: linear-gradient(to bottom, #57059e, #4a00e0);
 }
 .skills h2 {
@@ -651,8 +785,9 @@ header .navbar ul li a:hover {
 
 /* education section starts */
 .education {
-  background: #e5ecfb;
+  background: var(--education-bg);
   min-height: 0vh;
+  transition: background-color 0.3s ease;
 }
 .education .qoute {
   font-size: 1.5rem;
@@ -679,7 +814,8 @@ header .navbar ul li a:hover {
   margin-top: 2rem;
   overflow: hidden;
   /* transition: 0.3s; */
-  background: rgb(252, 252, 252);
+  background: var(--section-bg);
+  transition: background-color 0.3s ease;
 }
 .education .box-container .box:hover {
   transform: scale(1.03);
@@ -710,11 +846,19 @@ header .navbar ul li a:hover {
   font-weight: 600;
   text-align: left;
   margin-left: 1rem;
+  transition: color 0.3s ease;
 }
+
+[data-theme="dark"] .education .box-container .box .content h3 {
+  color: #4a9eff;
+}
+
 .education .box-container .box .content p {
   font-size: 1.5rem;
   margin-left: 1rem;
   text-align: left;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 .education h4 {
   font-size: 2rem;
@@ -1049,16 +1193,18 @@ header .navbar ul li a:hover {
 
 /* contact section starts */
 .contact {
-  background: #e5ecfb;
+  background: var(--contact-bg);
   min-height: 60vh;
+  transition: background-color 0.3s ease;
 }
 .contact .container {
   max-width: 1050px;
   width: 100%;
-  background: #fff;
+  background: var(--contact-form-bg);
   border-radius: 1.5rem;
-  margin: 2rem 5rem;
+  margin: 2rem auto;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
 }
 .contact .container .content {
   display: flex;
@@ -1095,10 +1241,11 @@ form i {
   position: absolute;
   top: 50%;
   left: 18px;
-  color: rgb(51, 51, 51);
+  color: var(--text-color);
   font-size: 17px;
   pointer-events: none;
   transform: translateY(-50%);
+  transition: color 0.3s ease;
 }
 form .field input,
 form .message textarea {
@@ -1110,7 +1257,9 @@ form .message textarea {
   font-family: "Poppins", sans-serif;
   border-radius: 5px;
   border: 1px solid rgb(51, 51, 51);
-  background: #e5ecfb;
+  background: var(--input-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .field input::placeholder,
 .message textarea::placeholder {
@@ -1218,16 +1367,18 @@ form .button-area {
 .footer {
   min-height: auto;
   padding-top: 0;
-  background: rgb(0, 1, 43);
+  background: var(--footer-bg);
+  transition: background-color 0.3s ease;
 }
 .footer .box-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 .footer .box-container .box {
   flex: 1 1 20rem;
-  margin: 0.5rem;
+  margin: 0;
 }
 .footer .box-container .box h3 {
   font-size: 2.5rem;
@@ -1510,6 +1661,105 @@ form .button-area {
 
 
 
+}
+
+/* ========================================
+   ADDITIONAL COMPREHENSIVE RESPONSIVE DESIGN
+   ======================================== */
+
+/* Better touch targets for mobile devices */
+@media (max-width: 768px) {
+  a, button, .btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+  
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+}
+
+/* Extra small devices (phones, up to 576px) - Enhanced */
+@media only screen and (max-width: 576px) {
+  /* Prevent text size adjustment on iOS */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  header {
+    height: auto;
+    min-height: 6.5rem;
+  }
+  
+  /* Better mobile menu */
+  header .navbar {
+    width: 85% !important;
+    max-width: 300px;
+  }
+  
+  /* Better focus states for accessibility */
+  a:focus,
+  button:focus,
+  .btn:focus {
+    outline: 2px solid #011aff;
+    outline-offset: 2px;
+  }
+  
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+}
+
+/* Very small devices (320px and below) */
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 45%;
+  }
+  
+  header {
+    padding: 1.2rem 3%;
+  }
+  
+  header .logo {
+    font-size: 1.4rem;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .home {
+    min-height: auto;
+    padding: 8rem 0 4rem;
+  }
+  
+  section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .home {
+    min-height: -webkit-fill-available;
+  }
+  
+  section {
+    min-height: -webkit-fill-available;
+  }
 }
 
 
